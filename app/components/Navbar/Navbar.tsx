@@ -25,7 +25,7 @@ const Navbar: FC = () => {
                 <PersonalLogo size={60} />
             </Link>
             <div className="md:flex items-center justify-between gap-x-10 hidden">
-                <NavLink path="/about">About</NavLink>
+                <NavLink path="/resume">Resume</NavLink>
                 <NavLink path="/blog">Blog</NavLink>
                 <NavLink path="/projects">Projects</NavLink>
                 <NavLink path="/experiments">Experiments</NavLink>
