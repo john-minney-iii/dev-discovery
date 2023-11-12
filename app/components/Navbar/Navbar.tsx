@@ -26,10 +26,10 @@ const navLinks: NavLinkProps[] = [
         children: "Resume",
         path: "/resume"
     },
-    {
-        children: "Blog",
-        path: "/blog"
-    },
+    // {
+    //     children: "Blog",
+    //     path: "/blog"
+    // },
     {
         children: "Projects",
         path: "/projects"
