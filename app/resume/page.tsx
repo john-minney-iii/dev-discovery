@@ -52,24 +52,24 @@ const EducationDetail: FC<{ education: EducationType }> = ({ education }) => {
 const ResumePage: NextPage = () => {
     return (
         <div className="w-full min-h-[90vh] p-10 flex flex-col justify-center items-center">
-            <h1 className="font-bold text-4xl md:text-5xl">John Minney III</h1>
+            <h1 className="text-4xl md:text-5xl">John Minney III</h1>
             <div className="flex flex-col md:flex-row gap-10 mt-5">
                 <div className="flex flex-col gap-y-10">
                     <div className="flex flex-col gap-y-5">
-                        <h4 className="font-bold text-4xl md:text-5xl">Experience</h4>
+                        <h4 className="text-4xl md:text-5xl">Experience</h4>
                         {workExperiences.map((workExperience, index) => (
                             <WorkExperienceDetail key={`${index}-${workExperience.title}`} workExperience={workExperience} />
                         ))}
                     </div>
                     <div className="flex flex-col gap-y-5">
-                        <h4 className="font-bold text-4xl md:text-5xl">Education</h4>
+                        <h4 className="text-4xl md:text-5xl">Education</h4>
                         {educationExperiences.map((education, index) => (
                             <EducationDetail key={`${index}-${education.school}`} education={education} />
                         ))}
                     </div>
                 </div>
                 <div className="flex flex-col">
-                    <h4 className="font-bold text-4xl md:text-5xl mb-3">Skills</h4>
+                    <h4 className="text-4xl md:text-5xl mb-3">Skills</h4>
                     <ul className="list-disc ml-10">
                         {skills.map((skill, index) => (
                             <li key={`${index}-${skill}`}><p>{skill}</p></li>
