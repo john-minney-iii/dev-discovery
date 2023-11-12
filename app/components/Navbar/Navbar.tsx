@@ -26,9 +26,9 @@ const Navbar: FC = () => {
             </Link>
             <div className="md:flex items-center justify-between gap-x-10 hidden">
                 <NavLink path="/resume">Resume</NavLink>
-                <NavLink path="/blog">Blog</NavLink>
+                {/* <NavLink path="/blog">Blog</NavLink>
                 <NavLink path="/projects">Projects</NavLink>
-                <NavLink path="/experiments">Experiments</NavLink>
+                <NavLink path="/experiments">Experiments</NavLink> */}
                 <NavLink path="/contact">Contact</NavLink>
             </div>
         </div>
