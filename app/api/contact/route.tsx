@@ -1,7 +1,9 @@
 import { NextRequest } from "next/server";
 import type { ContactFormType } from "@/app/contact/page";
+import sendGrid from "@sendgrid/mail";
 
-import { createTransport } from "nodemailer";
+//@ts-ignore
+sendGrid.setApiKey(process.env.SENDGRID_API_KEY);
 
 export type ContactReq = {
     contactForm: ContactFormType;
@@ -17,40 +19,25 @@ export const POST = async (req: NextRequest) => {
             message
         } = contactForm || ({} as ContactFormType)
 
-        const transporter = createTransport({
-            port: 465,
-            host: "smtp.gmail.com",
-            auth: {
-                user: process.env.NODEMAILER_EMAIL,
-                pass: process.env.NODEMAILER_PASSWORD
-            },
-            secure: true
+        const res = await sendGrid.send({
+            to: process.env.SENDGRID_TARGET,
+            from: process.env.SENDGRID_SENDER_IDENTITY || "",
+            subject: `[CONTACT FORM SUBMIT] ${subject}`,
+            text: `From: ${name}\n\nEmail: ${email}\n\nMessage:\n${message}`
         });
 
-        const nodemailerOptions = {
-            from: process.env.NODEMAILER_EMAIL,
-            to: process.env.NODEMAILER_TARGET,
-            subject: `[CONTACT FORM SUBMISSION] ${subject}`,
-            text: `Name: ${name}\n\n From: ${email}\n\n Message:\n ${message}`
-        };
-
-        transporter.sendMail(nodemailerOptions, async (error: any) => {
-            if (error) {
-                return new Response(
-                    JSON.stringify({
-                        error: true,
-                        errorMsg: error.message,
-                    }),
-                    { status: 500 },
-                );
-            }
-        })
+        if (res[0].statusCode !== 202) {
+            return new Response(JSON.stringify({ message: "Email not sent" }), {
+                status: 404,
+            });
+        }
 
         return new Response(JSON.stringify({ message: "Contact form submited" }), {
             status: 200,
         });
 
     } catch (error: any) { // TODO: type this
+        console.error(error.message)
         return new Response(
             JSON.stringify({
                 error: true,
