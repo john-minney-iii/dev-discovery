@@ -54,8 +54,7 @@ const ContactPage: NextPage = () => {
             <div className="max-w-[25rem] flex flex-col gap-y-4">
                 <p className="text-4xl md:text-6xl text-cyan">Hey There!</p>
                 <p className="text-md md:text-xl">
-                    Feel free to contact me at <span className="text-cyan">jminneyiii@gmail.com </span>
-                    or fill out the form to send me an email! I&apos;m exited to get in touch!
+                    Feel free tofill out the form to send me an email! I&apos;m exited to get in touch!
                 </p>
             </div>
             {isLoading ? (

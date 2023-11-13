@@ -1,6 +1,8 @@
 import { NextRequest } from "next/server";
 import type { ContactFormType } from "@/app/contact/page";
 
+import { createTransport } from "nodemailer";
+
 export type ContactReq = {
     contactForm: ContactFormType;
 }
@@ -15,15 +17,37 @@ export const POST = async (req: NextRequest) => {
             message
         } = contactForm || ({} as ContactFormType)
 
-        console.log('Name:', name);
-        console.log('Email:', email);
-        console.log('Subject:', subject);
-        console.log('Message:', message);
+        const transporter = createTransport({
+            port: 465,
+            host: "smtp.gmail.com",
+            auth: {
+                user: process.env.NODEMAILER_EMAIL,
+                pass: process.env.NODEMAILER_PASSWORD
+            },
+            secure: true
+        });
 
-        // TODO: hey send the email now
+        const nodemailerOptions = {
+            from: process.env.NODEMAILER_EMAIL,
+            to: process.env.NODEMAILER_TARGET,
+            subject: `[CONTACT FORM SUBMISSION] ${subject}`,
+            text: `Name: ${name}\n\n From: ${email}\n\n Message:\n ${message}`
+        };
+
+        transporter.sendMail(nodemailerOptions, async (error: any) => {
+            if (error) {
+                return new Response(
+                    JSON.stringify({
+                        error: true,
+                        errorMsg: error.message,
+                    }),
+                    { status: 500 },
+                );
+            }
+        })
 
         return new Response(JSON.stringify({ message: "Contact form submited" }), {
-            status: 404,
+            status: 200,
         });
 
     } catch (error: any) { // TODO: type this
