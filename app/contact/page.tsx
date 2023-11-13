@@ -36,7 +36,7 @@ const ContactPage: NextPage = () => {
             options: { body: contactRequest }
         });
 
-        if (!contactResponse.error) {
+        if (contactResponse.status === 200) {
             reset();
             setIsLoading(false);
             return;
