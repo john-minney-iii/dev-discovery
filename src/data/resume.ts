@@ -30,7 +30,7 @@ export const workExperiences: WorkExperienceType[] = [
     companyName: "CNE Creative Enterprises LLC",
     title: "Software Engineer",
     startDate: "Jul 2020",
-    endDate: "Dec 2022",
+    endDate: "Present",
     jobDescription: [
       "Developed robust web applications for internal business use with partnered companies.",
       "Utilized Django and React to lead the implementation of seamless communication with IoT devices, delivering real-time information on various systems to users.",
