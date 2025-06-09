@@ -40,10 +40,10 @@ const navLinks: NavLinkProps[] = [
   //     children: "Experiments",
   //     path: "/experiments"
   // },
-  {
-    children: "Contact",
-    path: "/contact",
-  },
+  // {
+  //   children: "Contact",
+  //   path: "/contact",
+  // },
 ];
 
 const Navbar: FC = () => {
