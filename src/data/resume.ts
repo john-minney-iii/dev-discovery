@@ -15,6 +15,19 @@ export type EducationType = {
 
 export const workExperiences: WorkExperienceType[] = [
   {
+    companyName: "Autodesk",
+    title: "Technical Consultant",
+    startDate: "Sept 2024",
+    endDate: "Present",
+    jobDescription: [
+      "Collaborated with a cross-functional team to design and develop web and desktop applications—ranging from exploratory prototypes to pre-production tools—integrating with Autodesk APIs and core product platforms.",
+      "Worked directly with customers to gather requirements and help deliver solutions that improved efficiency, streamlined workflows, and addressed real-world challenges.",
+      "Contributed to all phases of the software development lifecycle, including requirements analysis, solution architecture, implementation, and iterative refinement.",
+      "Helped deliver customer-validated applications that demonstrated feasibility, informed future development, and supported business goals.",
+      "Partnered with internal stakeholders to ensure alignment between technical solutions and product direction.",
+    ],
+  },
+  {
     companyName: "Lightcast.io",
     title: "Software Engineer",
     startDate: "Dec 2022",
